@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBox = () => {
+const SearchBox = ({searchfield}) => {
     return (
         <div>
             <input className="pa3 ba b--blue bg-light-blue" type="search" placeholder="search"/>
