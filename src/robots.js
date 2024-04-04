@@ -7,20 +7,20 @@ export const robots = [
 
     {
         id: 2,
-        name: "Enterprise",
-        email: "joshoington@gmail.com"
+        name: "Kimg Kong",
+        email: "gorillegorille@gmail.com"
     },
 
     {
         id: 3,
-        name: "Enterprise",
-        email: "joshoington@gmail.com"
+        name: "Kim-jun Sen",
+        email: "hehehe@gmail.com"
     },
 
     {
         id: 4,
-        name: "Enterprise",
-        email: "joshoington@gmail.com"
+        name: "Kamata",
+        email: "kiuno@gmail.com"
     },
 
     {
