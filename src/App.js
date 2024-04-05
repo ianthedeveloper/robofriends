@@ -12,8 +12,8 @@ class App extends Component {
         }
     }
 
-    onSearchChange (event) {
-        console.log(event.target.value);
+    onSearchChange = (event) => {
+        console.log(event);
     }
 
     render () {
