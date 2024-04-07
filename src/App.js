@@ -4,6 +4,7 @@ import CardList from './CardList';
 import {robots} from './robots';
 
 class App extends Component 
+
 {
         constructor() {
             super()
@@ -13,30 +14,29 @@ class App extends Component
             }
         }
 
-        // toLowerCase is used below to conver the specified data to Lowercase format
+        // toLowerCase is used below to convert the specified data to Lowercase format
 
         onSearchChange = (event) => {
 
-            // this.setState({searchfield: event.target.value});
-
-            console.log(event.target.value);
+            this.setState({searchfield: event.target.value});
 
         }
 
 
-
         render () {
 
-            const filteredRobots = this.state.robots.filter((robot) => {
+            const filteredRobots = this.state.robots.filter(robots => {
                 return 
                 robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
-            })
+            });
 
             return (
+
                 <div className='tc'>
                     <h2>RobotFriends</h2>
                     <SearchBox searchChange = {this.onSearchChange}/>
-                    <CardList robots = {this.state.robots}/>
+                    <CardList robots = {filteredRobots}/>
+                    
                 </div>
             );
         }

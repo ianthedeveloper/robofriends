@@ -58,4 +58,4 @@ export const robots = [
         name: "GTG",
         email: "brothers@hotmail.com"
     }
-]
+];
