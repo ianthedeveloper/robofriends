@@ -29,16 +29,15 @@
 
 import React from 'react';
 
-const Card = () => {
+const Card = (props) => {
+
+    const {id, name, email} = props;
+
     return (
-        // const {id, name, email} = props;
 
         <div className='f6 tc bg-light-red dib br3 pa3 ma2 grow bw2 shadow-8'>
 
-            const {id, name, email} = props;
-
-            <img src = "https://robohash.org/textintextin"/>
-            <p>{id}</p>
+            <img src = {`https://robohash.org/${id}?210%210`}/>
             <h2>{name}</h2>
             <p>{email}</p>
 
