@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import SearchBox from './SearchBox';
-import CardList from './CardList';
-import Scroll from './Scroll';
+import SearchBox from '../components/SearchBox';
+import CardList from '../components/CardList';
+import Scroll from '../components/Scroll';
 // import {robots} from './robots';
 import './App.css';
 
@@ -17,9 +17,7 @@ class App extends Component {
         // toLowerCase is used below to convert the specified data to Lowercase format
 
         onSearchChange = (event) => {
-
             this.setState({searchfield: event.target.value});
-
         }
 
         // Using APIs to get users from somewhere else on the web
@@ -28,19 +26,20 @@ class App extends Component {
             fetch('https://jsonplaceholder.typicode.com/users')
             .then((response) => response.json())
             .then((users) => {this.setState({robots: users})});
-
         }
 
 
         render () {
+            // To avoid repition of 'this.state'
+            const {robots, searchfield} = this.state;
 
-            const filteredRobots = this.state.robots.filter((robots) => {
-                return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
+            const filteredRobots = robots.filter((robots) => {
+                return robots.name.toLowerCase().includes(searchfield.toLowerCase())
             });
-            
+
             // Implementing a LOADING: alert in the event the webpage takes too long to load
 
-            if (this.state.robots.length === 0){
+            if (robots.length === 0){
                 return <h2>LOADING: </h2>
             } else {
                 return (
@@ -60,3 +59,35 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+// How to replace the if statement:
+
+// render () {
+//     // To avoid repition of 'this.state'
+//     const {robots, searchfield} = this.state;
+
+//     const filteredRobots = robots.filter((robots) => {
+//         return robots.name.toLowerCase().includes(searchfield.toLowerCase())
+//     });
+
+//     // Implementing a LOADING: alert in the event the webpage takes too long to load
+
+        
+//         return !robots.length ? 
+//         <h2>LOADING: </h2>:
+//         (
+
+//             <div className='tc'>
+//                 <h2>RobotFriends</h2>
+//                 <SearchBox searchChange = {this.onSearchChange}/>
+//                 <Scroll>
+//                     <CardList robots = {filteredRobots}/>
+//                 </Scroll>
+                
+//             </div>
+//         );
+// }
+
