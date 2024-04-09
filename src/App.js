@@ -21,10 +21,13 @@ class App extends Component {
 
         }
 
+        // Using APIs to get users from somewhere else on the web
+
         componentDidMount(){
             fetch('https://jsonplaceholder.typicode.com/users')
             .then((response) => response.json())
-            .then((users) => this.setState({robots:users}))
+            .then((users) => {this.setState({robots: users})});
+
         }
 
 
@@ -33,17 +36,24 @@ class App extends Component {
             const filteredRobots = this.state.robots.filter((robots) => {
                 return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
             });
+            
+            // Implementing a LOADING: alert in the event the webpage takes too long to load
+            
+            if (this.state.robots.length === 0){
+                return <h2>LOADING: </h2>
+            } else {
+                return (
 
-            return (
-
-                <div className='tc'>
-                    <h2>RobotFriends</h2>
-                    <SearchBox searchChange = {this.onSearchChange}/>
-                    <CardList robots = {filteredRobots}/>
-                     
-                </div>
-            );
+                    <div className='tc'>
+                        <h2>RobotFriends</h2>
+                        <SearchBox searchChange = {this.onSearchChange}/>
+                        <CardList robots = {filteredRobots}/>
+                        
+                    </div>
+                );
+            }
         }
+
 }
 
 export default App;
