@@ -13,6 +13,7 @@ function App () {
         // Introducing STATE
         const [robots, setRobots] = useState([]);
         const [searchfield, setSearchfield] = useState(' ');
+        const [count, setCount] = useState(0);
 
         // toLowerCase is used below to convert the specified data to Lowercase format
         const onSearchChange = (event) => {setSearchfield(event.target.value)}
@@ -22,7 +23,7 @@ function App () {
             fetch('https://jsonplaceholder.typicode.com/users')
             .then((response) => response.json())
             .then((users) => {setRobots(users)})
-        })
+        }, [])
 
         const filteredRobots = robots.filter((robots) => {
             return robots.name.toLowerCase().includes   (searchfield.toLowerCase())
@@ -37,6 +38,7 @@ function App () {
 
                         <div className='tc'>
                                 <h2>RobotFriends</h2>
+                                <button onClick = {(click) => {setCount(count + 1)}}></button>
                                 <SearchBox searchChange = {onSearchChange}/>
                                 <Scroll>
                                     <ErrorBoundary>
