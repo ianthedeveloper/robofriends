@@ -32,7 +32,7 @@ function App () {
         // Implementing a LOADING: alert in the event the webpage takes too long to load
 
         if (robots.length === 0){
-            return <h2>Getting Ready: </h2>
+            return <h2>LOADING: </h2>
             } else {
                     return (
 
